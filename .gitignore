@@ -1,3 +1,8 @@
+# Terraform
+terraform.tfstate
+terraform.tfstate.backup
+*/.terraform/*
+
 # Python
 
 # Byte-compiled / optimized / DLL files
