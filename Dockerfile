@@ -17,8 +17,10 @@ COPY .htmlnanorc \
     ./
 
 RUN npm ci
+# RUN npm install
 
 COPY client ./client
+RUN npm cache clean --force
 RUN npm run build
 
 # Runtime Container
