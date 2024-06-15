@@ -1,3 +1,7 @@
+variable "deploy" {
+  description = "Deploy flag for ECS"
+  default     = "false"
+}
 
 variable "vpc_id" {
   description = "VPC ID"
