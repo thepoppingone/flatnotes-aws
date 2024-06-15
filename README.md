@@ -40,8 +40,6 @@ module "flatnotes_infra" {
 3. Once that is done, update the block `deploy` variable value to `true` and run `terraform apply`. Deployment can take up to 5 mins. 3 mins to setup the service, another 2 mins max for the container to be ready.
 
 ```
-  vpc_id             = "vpc-05d23fd53c23eaba6" # Change me
-  public_subnets_ids = ["subnet-0e836ff84212395c8", "subnet-0007831a1dea41b89", "subnet-02e7925c27ca569b0"] # Change me
   deploy             = true # can only set to true after ECR has image pushed
 ```
 
