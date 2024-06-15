@@ -22,7 +22,7 @@ jobs:
       - name: ECR URI
         id: ecr-uri
         run: |
-          export ECR_REPO=$(aws ecr describe-repositories --repository-names flatnotes --query 'repositories[0].repositoryUri' --output text --region ${{ secrets.AWS_REGION }})
+          export REPO_URI=$(aws ecr describe-repositories --repository-names flatnotes --query 'repositories[0].repositoryUri' --output text --region ${{ secrets.AWS_REGION }})
           echo "::set-output name=repo_uri::$REPO_URI"
 
       - name: Login to Amazon ECR
