@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "flatnotes" {
   container_definitions = jsonencode([
     {
       name      = "flatnotes"
-      image     = "dullage/flatnotes:latest@sha256:abb3dd864a06aaca3a900d9c43be608765ce42a562c7b2592b637eda155bb0bc"
+      image     = "891377084300.dkr.ecr.ap-southeast-1.amazonaws.com/flatnotes:test"
       essential = true
       portMappings = [
         {

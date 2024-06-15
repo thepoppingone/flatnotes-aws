@@ -59,3 +59,8 @@ resource "aws_lb_listener" "flatnotes" {
     target_group_arn = aws_lb_target_group.flatnotes.arn
   }
 }
+
+output "alb_dns" {
+  value = aws_lb.flatnotes.dns_name
+}
+
