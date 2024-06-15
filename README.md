@@ -1,7 +1,6 @@
 # Flatnotes on AWS
 
-The solution should be hosted in a private Github repository
-have a README containing relevant information: used tools, implemented architecture, deployment process, etc ...
+Forked from <https://github.com/dullage/flatnotes> and modified it for test purposes.
 
 ## Tools
 
@@ -23,7 +22,30 @@ have a README containing relevant information: used tools, implemented architect
 
 ## Deployment steps
 
-# Original README
+1. Modify the following block in the terraform folder's `flatnotes.tf` to the VPC ID and Public Subnet IDs in the AWS Account, connect to AWS account either using AWS Access Keys or AWS CLI login, then run `terraform apply` from `terraform` folder.
+
+```
+module "flatnotes_infra" {
+  source = "./modules/flatnotes"
+
+  vpc_id             = "vpc-05d23fd53c23eaba6" # Change me
+  public_subnets_ids = ["subnet-0e836ff84212395c8", "subnet-0007831a1dea41b89", "subnet-02e7925c27ca569b0"] # Change me
+  deploy             = false # can only set to true after ECR has image pushed
+}
+```
+
+2. Trigger the Docker Build and Push pipeline at <https://github.com/thepoppingone/flatnotes-aws/actions/workflows/buildandpushecr.yml>, proceed to step 3 only when run is successful, make sure AWS_ACCESS_KEY and AWS_SECRET_KEY secrets in GitHub Actions are modified to a working AWS account.
+![PushECR](image-1.png)
+
+3. Once that is done, update the block `deploy` variable value to `true` and run `terraform apply`. Deployment can take up to 5 mins. 3 mins to setup the service, another 2 mins max for the container to be ready.
+
+```
+  vpc_id             = "vpc-05d23fd53c23eaba6" # Change me
+  public_subnets_ids = ["subnet-0e836ff84212395c8", "subnet-0007831a1dea41b89", "subnet-02e7925c27ca569b0"] # Change me
+  deploy             = true # can only set to true after ECR has image pushed
+```
+
+# Original README from Flatnotes owner
 
 <p align="center">
   <img src="docs/logo.svg" width="300px"></img>
