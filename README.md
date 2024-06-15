@@ -34,7 +34,7 @@ module "flatnotes_infra" {
 }
 ```
 
-2. Trigger the Docker Build and Push pipeline at [Workflow](https://github.com/thepoppingone/flatnotes-aws/actions/workflows)buildandpushecr.yml>, proceed to step 3 only when run is successful, make sure AWS_ACCESS_KEY, AWS_SECRET_KEY and AWS_REGION secrets in GitHub Actions are modified to a working AWS account. Modify the secrets at [this link](https://github.com/thepoppingone/flatnotes-aws/settings/secrets/actions)
+2. Trigger the Docker Build and Push pipeline at [Workflow](https://github.com/thepoppingone/flatnotes-aws/actions/workflows/buildandpushecr.yml), proceed to step 3 only when run is successful, make sure AWS_ACCESS_KEY, AWS_SECRET_KEY and AWS_REGION secrets in GitHub Actions are modified to a working AWS account. Modify the secrets at [this link](https://github.com/thepoppingone/flatnotes-aws/settings/secrets/actions)
 ![PushECR](image-1.png)
 
 3. Once that is done, update the block `deploy` variable value to `true` and run `terraform apply`. Deployment can take up to 5 mins. 3 mins to setup the service, another 2 mins max for the container to be ready.
